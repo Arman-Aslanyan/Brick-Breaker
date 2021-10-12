@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class LifeKeeper : MonoBehaviour
 {
-    int lives = 3;
+    int lives;
 
     [SerializeField] GameObject ballPrefab;
 
@@ -15,7 +15,7 @@ public class LifeKeeper : MonoBehaviour
         GetComponent<Text>().text = lives.ToString();
     }
 
-    public void DecreaseLives()
+ /*   public void DecreaseLives()
     {
         lives--;
         GetComponent<Text>().text = lives.ToString();
@@ -30,11 +30,5 @@ public class LifeKeeper : MonoBehaviour
     {
         Vector3 respawnPos = new Vector3(0, -4, 0);
         Instantiate(ballPrefab, respawnPos, Quaternion.identity);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    }*/
 }

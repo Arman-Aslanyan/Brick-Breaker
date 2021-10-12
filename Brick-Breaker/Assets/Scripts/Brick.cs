@@ -5,45 +5,27 @@ using UnityEngine;
 public class Brick : MonoBehaviour
 {
     [SerializeField] int hp;
-    private string name;
+    private int start_hp;
 
     // Start is called before the first frame update
     void Start()
     {
-        name = gameObject.name;
+        start_hp = hp;
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        DecreaseHealth();
+        DecreaseHealth(start_hp);
     }
 
-    private void DecreaseHealth()
+    private void DecreaseHealth(int score_change)
     {
         hp--;
         if (hp <= 0)
         {
+            FindObjectOfType<LevelController>().IncreaseScore(score_change);
+            FindObjectOfType<LevelLoader>().DeductBrick();
             Destroy(gameObject);
-            if (name == "R_Brick")
-            {
-                FindObjectOfType<ScoreKeeper>().IncreaseScore(5);
-            }
-            else if (name == "Y_Brick")
-            {
-                FindObjectOfType<ScoreKeeper>().IncreaseScore(3);
-            }
-            else if (name == "LG_Brick")
-            {
-                FindObjectOfType<ScoreKeeper>().IncreaseScore(2);
-            }
-            else if (name == "DG_Brick")
-            {
-                FindObjectOfType<ScoreKeeper>().IncreaseScore(1);
-            }
-            else
-            {
-                Debug.LogError("Invalid Brick Error");
-            }
         }
         else
         {

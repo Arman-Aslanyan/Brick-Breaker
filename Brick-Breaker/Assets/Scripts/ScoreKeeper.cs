@@ -18,10 +18,4 @@ public class ScoreKeeper : MonoBehaviour
         score += increment;
         GetComponent<Text>().text = score.ToString();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
